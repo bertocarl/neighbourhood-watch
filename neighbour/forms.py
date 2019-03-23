@@ -1,5 +1,5 @@
 from django import forms
-from .models import notifications,Business,Profile,BlogPost,Comment
+from .models import notifications,Business,Profile,Blog,Comment
 
 class notificationsForm(forms.ModelForm):
     class Meta:
@@ -11,9 +11,9 @@ class ProfileForm(forms.ModelForm):
         model=Profile
         exclude=['username']
 
-class BlogPostForm(forms.ModelForm):
+class BlogForm(forms.ModelForm):
     class Meta:
-        model=BlogPost
+        model=Blog
         exclude=['username','neighbourhood','avatar']
 
 class BusinessForm(forms.ModelForm):
