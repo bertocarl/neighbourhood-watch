@@ -13,7 +13,7 @@ class neighbourhood(models.Model):
     name= models.CharField(max_length=100)
     location=models.CharField(max_length=100)
     occupant_count=models.IntegerField(default="")
-    admin=models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    # admin=models.ForeignKey(neighbourhood, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.neighbourhood
@@ -27,7 +27,7 @@ class neighbourhood(models.Model):
 
 class user(models.Model):
     name=models.CharField(max_length=100)
-    id=models.IntegerField(default='')
+    ID=models.IntegerField(default='')
     email=models.EmailField()
     neighbourhood_ID = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
 
