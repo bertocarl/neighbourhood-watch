@@ -1,9 +1,9 @@
 from django import forms
-from .models import notifications,Business,Profile,Blog,Comment
+from .models import Notifications,Business,Profile,Blog,Comment
 
-class notificationsForm(forms.ModelForm):
+class NotificationsForm(forms.ModelForm):
     class Meta:
-        model=notifications
+        model=Notifications
         exclude=['author','neighbourhood','post_date']
 
 class ProfileForm(forms.ModelForm):

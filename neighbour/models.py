@@ -5,46 +5,38 @@ from django.db.models import Q
 import datetime as dt
 
 Priority=(
-    ('Informational','Informational'),
+    ('Informative','Informative'),
     ('High Priority','High Priority'),
 )
 
-class neighbourhood(models.Model):
-    name= models.CharField(max_length=100)
-    location=models.CharField(max_length=100)
-    occupant_count=models.IntegerField(default="")
-    # admin=models.ForeignKey(neighbourhood, on_delete=models.CASCADE)
+# Create your models here.
+class Neighbourhood(models.Model):
+    hood= models.CharField(max_length=100)
 
     def __str__(self):
-        return self.neighbourhood
+        return self.hood
 
-    def save_neighbourhood(self):
+    def save_hood(self):
         self.save()
 
     @classmethod
-    def delete_neighbourhood(cls,neighbourhood):
-        cls.objects.filter(neighbourhood=neighbourhood).delete()
-
-class user(models.Model):
-    name=models.CharField(max_length=100)
-    ID=models.IntegerField(default='')
-    email=models.EmailField()
-    neighbourhood_ID = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    def delete_hood(cls,Neighbourhood):
+        cls.objects.filter(Neighbourhood=Neighbourhood).delete()
 
 
-class notifications(models.Model):
+class Notifications(models.Model):
     title = models.CharField(max_length=100)
     notification = HTMLField()
-    priority = models.CharField(max_length=15,choices=Priority,default="Informational")
+    priority = models.CharField(max_length=15,choices=Priority,default="Informative")
     author = models.ForeignKey(User,on_delete=models.CASCADE)
-    neighbourhood_ID = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
 
 
-class healthservices(models.Model):
+class Healthservices(models.Model):
     healthservices = models.CharField(max_length=100)
 
     def __str__(self):
@@ -54,14 +46,14 @@ class healthservices(models.Model):
         self.save()
 
     @classmethod
-    def delete_healthservices(cls,healthservices):
-        cls.objects.filter(healthservices=healthservices).delete()
+    def delete_healthservices(cls,Healthservices):
+        cls.objects.filter(Healthservices=Healthservices).delete()
 
 
 class Business(models.Model):
     logo = models.ImageField(upload_to='businesslogo/')
     description = HTMLField()
-    neighbourhood_ID = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
@@ -73,18 +65,18 @@ class Business(models.Model):
 
 class Health(models.Model):
     logo = models.ImageField(upload_to='healthlogo/')
-    neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
     contact = models.IntegerField()
     address =models.CharField(max_length=100)
-    healthservices = models.ManyToManyField(healthservices)
+    healthservices = models.ManyToManyField(Healthservices)
 
     def __str__(self):
         return self.name
 
 class Authorities(models.Model):
-    neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
     contact = models.IntegerField()
@@ -97,8 +89,8 @@ class Authorities(models.Model):
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/')
     description = HTMLField()
-    neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
 
@@ -109,8 +101,8 @@ class Blog(models.Model):
     title = models.CharField(max_length=150)
     image = models.ImageField(upload_to='post/')
     post = HTMLField()
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
-    neighbourhood= models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    hood= models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True)
     avatar = models.ImageField(upload_to='avatars/')
 
@@ -119,11 +111,11 @@ class Blog(models.Model):
 
     @classmethod
     def search_blog(cls,search_term):
-        blogs = cls.objects.filter(Q(username__username=search_term) | Q(neighbourhood__neighbourhood=search_term) | Q(title__icontains=search_term))
+        blogs = cls.objects.filter(Q(username__username=search_term) | Q(Neighbourhood__Neighbourhood=search_term) | Q(title__icontains=search_term))
         return blogs
 
 
 class Comment(models.Model):
     comment = models.CharField(max_length=300)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     post = models.ForeignKey(Blog,on_delete=models.CASCADE)

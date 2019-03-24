@@ -11,13 +11,13 @@
   </div>
 
   <div class="text-center">
-    <a href="{% url 'new-blogpost' %}" >
-        <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Create BlogPost</button>
+    <a href="{% url 'new-blog' %}" >
+        <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Create Blog</button>
     </a>
   </div>
 
   <div class="row">
-  {% for blog in blogposts %}
+  {% for blog in blog %}
   <div class="col-md-6">
   <div class="card" style="width: 30rem;margin-top:10px;">
   <div class="card-body">
@@ -27,7 +27,7 @@
     <a href="/user/{{blog.username}}" style="color:black;text-decoration:none;margin:auto;">
       <h6 class="card-subtitle mb-2 text-muted">{{blog.username}}</h6>
     </a>
-    <p class="card-text">{{blog.post|truncatechars:150 | safe}}</p>
+    <p class="card-text">{{blog|truncatechars:150 | safe}}</p>
     <a href="/view/blog/{{blog.id}}" class="card-link">Continue reading</a>
   </div>
 </div>

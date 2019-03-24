@@ -14,27 +14,27 @@
   </div>
 
 <div class="row">
-  {% for authority in authorities %}
+  {% for authorities in authorities %}
   <div class="col-md-6">
   <div class="card" style="width: 20rem;width: 25rem;margin-top:10px; ">
   <div class="card-body">
-      <h3 class="card-title" data-toggle="modal" data-target="#{{authority.id}}">{{authority.name}}</h3>
+      <h3 class="card-title" data-toggle="modal" data-target="#{{authorities.id}}">{{authorities.name}}</h3>
   </div>
 </div>
 </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="{{authority.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="{{authorities.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content text-center">
       <div class="modal-header text-center">
-        <h3 class="text-center">{{authority.name}}</h3>
+        <h3 class="text-center">{{authorities.name}}</h3>
       </div>
       <div class="modal-body">
         <h4 class="text-center">Contacts</h4>
-        <p>Phone Number: {{authority.contact}}</p>
-        <p>Address: {{authority.address}}</p>
+        <p>Phone Number: {{authorities.contact}}</p>
+        <p>Address: {{authorities.address}}</p>
       </div>
       <div class="modal-footer">
 
