@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .serializer import AuthoritiesSerializer, HealthSerializer, BusinessSerializer
 
 
 
@@ -225,3 +226,21 @@ def search_results(request):
     else:
         message="You haven't searched for any term"
         return render(request,'search.html',{"message":message})
+
+class BusinessList(APIView):
+    def get(self, request, format=None):
+        all_business = Business.objects.all()
+        serializers = BusinessSerializer(all_business, many=True)
+        return Response(serializers.data)
+
+class AuthoritiesList(APIView):
+    def get(self, request, format=None):
+        all_authorities = Authorities.objects.all()
+        serializers =AuthoritiesSerializer(all_authorities, many=True)
+        return Response(serializers.data)
+
+class HealthList(APIView):
+    def get(self, request, format=None):
+        all_health = Health.objects.all()
+        serializers = HealthSerializer(all_health, many=True)
+        return Response(serializers.data)

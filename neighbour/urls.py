@@ -19,7 +19,10 @@ urlpatterns=[
     url(r'^new/notification$',views.new_notification, name='new-notification'),
     url(r'^update/profile$',views.update_profile, name='update-profile'),
     url(r'^search/',views.search_results, name='search_results'),
-
+    url(r'^api/authorities/$', views.AuthoritiesList.as_view()),
+    url(r'^api/health/$', views.HealthList.as_view()),
+    url(r'^api/business/$', views.BusinessList.as_view()),
+    
 ]
 
 if settings.DEBUG:
