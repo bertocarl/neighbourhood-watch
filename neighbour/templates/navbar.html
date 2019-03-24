@@ -1,6 +1,7 @@
+{% load bootstrap3 %}
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Neighbourhood Watch</a>
+  <a class="navbar-brand" href="/">Hood</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -46,10 +47,17 @@
       </li>
       {% endif %}
     </ul>
-
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle">API<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/api/authorities">Authorities API</a></li>
+          <li><a href="/api/health">Health API</a></li>
+          <li><a href="/api/business">Business API</a></li>
+        </ul>
+      
     <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results'%}">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="blog" >
       <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
     </form>
+    
   </div>
 </nav>
