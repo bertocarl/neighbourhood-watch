@@ -7,7 +7,7 @@
 <div class="container" style="margin-top:15px;">
   <div class="text-center">
     <a href="{% url 'new-notification' %}" >
-        <button class="btn btn-primary" style="height:50px;  margin-top: -6px;margin-bottom:10px;">Post Notification</button>
+        <button class="btn btn-warning" style="height:50px;  margin-top: -6px;margin-bottom:10px;">Post Notification</button>
     </a>
   </div>
 
@@ -22,36 +22,32 @@
       </tr>
     </thead>
     <tbody>
-      {% for notification in notifications%}
-      <tr data-toggle="modal" data-target="#{{notification.id}}">
-        <td>{{notification.title}}</td>
-        <td>{{notification.notification|safe|truncatechars:85 }}</td>
-        <td>{{notification.priority}}</td>
-        <td>{{notification.author}}</td>
-        <td>{{notification.post_date|date:"M d, Y"}}</td>
+      {% for notifications in notifications%}
+      <tr data-toggle="modal" data-target="#{{notifications.id}}">
+        <td>{{notifications.title}}</td>
+        <td>{{notifications.notification|safe|truncatechars:85 }}</td>
+        <td>{{notifications.priority}}</td>
+        <td>{{notifications.author}}</td>
+        <td>{{notifications.post_date|date:"M d, Y"}}</td>
       </tr>
 
       <!-- Modal -->
-      <div class="modal fade" id="{{notification.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="{{notifications.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content text-center">
             <div class="modal-header text-center">
-              <h3 class="text-center">{{notification.title}}</h3>
+              <h3 class="text-center">{{notifications.title}}</h3>
             </div>
             <div class="modal-body">
-              <p class="pmodal">{{notification.notification|safe}}</p>
+              <p class="pmodal">{{notifications.notifications|safe}}</p>
             </div>
             <div class="modal-footer" style="display:block;">
-              <p><span style="font-weight:bold;">Priority:</span> {{notification.priority}}</p>
-              <p><span style="font-weight:bold;">Posted on:</span> {{notification.post_date|date:"M d, Y"}}</p>
+              <p><span style="font-weight:bold;">Priority:</span> {{notifications.priority}}</p>
+              <p><span style="font-weight:bold;">Posted on:</span> {{notifications.post_date|date:"M d, Y"}}</p>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
 
   {% endfor%}
   </tbody>

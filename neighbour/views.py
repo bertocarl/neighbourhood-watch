@@ -17,7 +17,6 @@ from rest_framework.views import APIView
 
 
 
-# Create your views here.
 def index(request):
     try:
         if not request.user.is_authenticated:
@@ -38,28 +37,28 @@ def index(request):
 
 @login_required(login_url='/accounts/login/')
 def notification(request):
-    current_user=request.user
+    current_user = request.user
     all_notifications = Notifications.objects.filter()
 
     return render(request,'notifications.html',{"all_notifications":all_notifications})
 
 @login_required(login_url='/accounts/login/')
 def blog(request):
-    current_user=request.user
+    current_user = request.user
     blogs = Blog.objects.filter()
 
     return render(request,'blog.html',{"blogs":blogs})
 
 @login_required(login_url='/accounts/login/')
 def health(request):
-    current_user=request.user
+    current_user = request.user
     healthservices = Healthservices.objects.filter()
 
     return render(request,'health.html',{"healthservices":healthservices})
 
 @login_required(login_url='/accounts/login/')
 def authorities(request):
-    current_user=request.user
+    current_user = request.user
     authorities = Authorities.objects.filter()
 
     return render(request,'authorities.html',{"authorities":authorities})
@@ -96,6 +95,7 @@ def view_blog(request,id):
 @login_required(login_url='/accounts/login/')
 def my_profile(request):
     current_user=request.user
+    profile =  Profile.objects.filter()
     
     return render(request,'user_profile.html',{"profile":profile})
 
@@ -103,6 +103,7 @@ def my_profile(request):
 @login_required(login_url='/accounts/login/')
 def user_profile(request,user):
     user = User.objects.get(user=user)
+    profile = Profile.objects.filter()
    
     return render(request,'user_profile.html',{"profile":profile})
 
@@ -183,7 +184,7 @@ def new_notification(request):
 
 
     else:
-        form = notificationsForm()
+        form = NotificationsForm()
 
     return render(request,'notifications_form.html',{"form":form})
 
