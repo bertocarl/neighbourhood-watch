@@ -29,5 +29,4 @@ This web-app allows a user to get information about his neighbour hood and all a
 * The source code is also contained within the folder containing this ReadMe with comments on the code thus third-party support can be offered.
 
 ### License
-Moringa School
 Copyright (c)2019 **Albert Carlos Omware**

@@ -23,7 +23,7 @@
     </thead>
     <tbody>
       {% for notifications in notifications%}
-      <tr data-toggle="modal" data-target="#{{notifications.id}}">
+      <tr data-toggle="modal" data-target="#">
         <td>{{notifications.title}}</td>
         <td>{{notifications.notification|safe|truncatechars:85 }}</td>
         <td>{{notifications.priority}}</td>

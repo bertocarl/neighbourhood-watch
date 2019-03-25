@@ -63,6 +63,12 @@ class Business(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def search_business(cls,search_term):
+        businesses = cls.objects.filter(Q(user__user=search_term) | Q(hood__hood=search_term) | Q(owner__owner=search_term) | Q(address__address=search_term) | Q(title__icontains=search_term))
+                
+        return businesses
+
 class Health(models.Model):
     logo = models.ImageField(upload_to='healthlogo/')
     hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
@@ -109,10 +115,7 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
-    @classmethod
-    def search_blog(cls,search_term):
-        blogs = cls.objects.filter(Q(username__username=search_term) | Q(Neighbourhood__Neighbourhood=search_term) | Q(title__icontains=search_term))
-        return blogs
+    
 
 
 class Comment(models.Model):

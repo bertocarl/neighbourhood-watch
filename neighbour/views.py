@@ -110,9 +110,7 @@ def user_profile(request,user):
 
 @login_required(login_url='/accounts/login/')
 def new_blog(request):
-    current_user=request.user
-   
-
+    user=request.user
     if request.method=="POST":
         form =BlogForm(request.POST,request.FILES)
         if form.is_valid():
@@ -122,12 +120,15 @@ def new_blog(request):
             blog.avatar = profile.avatar
             blog.save()
 
-        return HttpResponseRedirect('/blog')
+        return redirect('blog')
 
     else:
         form = BlogForm()
+    context = {
+      'form': form
+   }
 
-    return render(request,'blog_form.html',{"form":form})
+    return render(request,'blog_form.html', context)
 
 @login_required(login_url='/accounts/login/')
 def new_business(request):
@@ -171,11 +172,11 @@ def new_notification(request):
    
 
     if request.method=="POST":
-        form =notificationsForm(request.POST,request.FILES)
+        form = NotificationsForm(request.POST,request.FILES)
         if form.is_valid():
             notification = form.save(commit = False)
             notification.author = current_user
-            notification.neighbourhood = profile.neighbourhood
+            notification.hood = profile.neighbourhood
             notification.save()
 
             if notification.priority == 'High Priority':
@@ -214,14 +215,14 @@ def update_profile(request):
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
-    if 'blog' in request.GET and request.GET["blog"]:
-        search_term = request.GET.get("blog")
-        searched_blogs = Blog.search_blog(search_term)
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        searched_business = Business.search_business(search_term)
         message=f"{search_term}"
 
-        print(searched_blogs)
+        print(searched_business)
 
-        return render(request,'search.html',{"message":message,"blogs":searched_blogs})
+        return render(request,'search.html',{"message":message,"searched_business":searched_business})
 
     else:
         message="You haven't searched for any term"

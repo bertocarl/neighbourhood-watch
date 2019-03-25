@@ -7,8 +7,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="../static/css/profile.css">
-  <link rel="stylesheet" href="../static/css/base.css">
+  <!-- <link rel="stylesheet" href="../static/css/profile.css">
+  <link rel="stylesheet" href="../static/css/base.css"> -->
 
 </head>
 
@@ -23,24 +23,24 @@
   </div>
 
 
-  {% if blogs %}
+  {% if blog %}
   <div class="text-center">
     <div class="panel" style="width: 40rem;">
       <!-- <div class="custom-card-header"> -->
       <div class="panel-body">
-        {% for blog in blogs%}
+        {% for blog in blog%}
         <!-- <div class="custom-card-header"> -->
 
         <div class="card" style="width: 20rem;">
         <div class="card-body">
-          <a href="/view/blog/{{blog.id}}" style="color:black;text-decoration:none;margin:auto;">
+          <a href="/view/blog" style="color:black;text-decoration:none;margin:auto;">
             <h5 class="card-title">{{blog.title}}</h5>
           </a>
-          <a href="/user/{{blog.username}}" style="color:black;text-decoration:none;margin:auto;">
+          <a href="/user" style="color:black;text-decoration:none;margin:auto;">
             <h6 class="card-subtitle mb-2 text-muted">{{blog.username}}</h6>
           </a>
           <p class="card-text">{{blog.post|truncatechars:200 | safe}}</p>
-          <a href="/view/blog/{{blog.id}}" class="card-link">Continue reading</a>
+          <a href="/view/blog" class="card-link">Continue reading</a>
         </div>
       </div>
         <!-- </div> -->
@@ -54,7 +54,7 @@
 </div>
 <style>
 h2{
-  color:white;
+  color:#1F0812;
 }
 
 </style>

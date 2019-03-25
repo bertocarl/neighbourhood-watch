@@ -4,17 +4,17 @@ from .models import Notifications,Business,Profile,Blog,Comment
 class NotificationsForm(forms.ModelForm):
     class Meta:
         model=Notifications
-        exclude=['author','neighbourhood','post_date']
+        exclude=['title']
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
-        exclude=['username']
+        exclude=['user']
 
 class BlogForm(forms.ModelForm):
     class Meta:
         model=Blog
-        exclude=['username','neighbourhood','avatar']
+        exclude=['user','neighbourhood','avatar']
 
 class BusinessForm(forms.ModelForm):
     class Meta:
@@ -24,4 +24,4 @@ class BusinessForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model=Comment
-        exclude=['username','post']
+        exclude=['user','post']
