@@ -39,16 +39,6 @@ strong{
     display: flex;
     transform: translate(-50%, -50%);
 }
-.time{
-  color:white;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  display: flex;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-}
-
 .header{
   color:white;
   position: absolute;
