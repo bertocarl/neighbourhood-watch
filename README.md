@@ -7,7 +7,7 @@ Developed By: Albert Carlos Omware
 This web-app allows a user to get information about his neighbour hood and all amenities around with first hand infomation concerning the events around him/her.
 
 ## Setup/Installation Requirements
-* Live site can be accessed from the following link 
+* Live site can be accessed from the following link https://kahood.herokuapp.com/
 
 
 ### Known Bugs
