@@ -1,4 +1,6 @@
 from django.test import TestCase
+from .models import Neighbourhood
+from django.contrib.auth.models import User
 
 class NeighbourhoodTestClass(TestCase):
     def setUp(self):
