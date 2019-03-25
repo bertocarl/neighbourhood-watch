@@ -17,7 +17,7 @@ This web-app allows a user to get information about his neighbour hood and all a
 
 
 ### Technologies Used
-* Atom was the source code editor of choice.
+* Vscode was the source code editor of choice.
 * Git and Github were used as my local and online repositories respectively.
 * Django was used as the framework of choice
 * Heroku was used in deploying the live site
