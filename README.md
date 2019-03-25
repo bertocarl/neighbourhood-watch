@@ -11,9 +11,8 @@ This web-app allows a user to get information about his neighbour hood and all a
 
 
 ### Known Bugs
-
-
-### Behaviour Driven Development
+* The forms are not displaying to post
+* The styling is not done yet
 
 
 ### Technologies Used
