@@ -1,4 +1,4 @@
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Hood</a>
@@ -8,18 +8,14 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'authorities'%}">Authorities</a>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{% url 'blog'%}">Blog</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'businesses'%}">Businesses</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'health'%}">Health Services</a>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{% url 'notifications'%}">Notifications</a>
       </li>
@@ -46,9 +42,7 @@
     </ul>
       <a href="#" data-toggle="dropdown" class="dropdown-toggle">API<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/api/authorities">Authorities API</a></li>
-          <li><a href="/api/health">Health API</a></li>
-          <li><a href="/api/business">Business API</a></li>
+         <li><a href="/api/business">Business API</a></li>
         </ul>
       
     <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results'%}">

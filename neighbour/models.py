@@ -35,21 +35,6 @@ class Notifications(models.Model):
     def __str__(self):
         return self.title
 
-
-class Healthservices(models.Model):
-    healthservices = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.healthservices
-
-    def save_healthservices(self):
-        self.save()
-
-    @classmethod
-    def delete_healthservices(cls,Healthservices):
-        cls.objects.filter(Healthservices=Healthservices).delete()
-
-
 class Business(models.Model):
     logo = models.ImageField(upload_to='businesslogo/')
     description = HTMLField()
@@ -68,29 +53,6 @@ class Business(models.Model):
         businesses = cls.objects.filter(Q(user__user=search_term) | Q(hood__hood=search_term) | Q(owner__owner=search_term) | Q(address__address=search_term) | Q(title__icontains=search_term))
                 
         return businesses
-
-class Health(models.Model):
-    logo = models.ImageField(upload_to='healthlogo/')
-    hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
-    name =models.CharField(max_length=100)
-    email = models.EmailField()
-    contact = models.IntegerField()
-    address =models.CharField(max_length=100)
-    healthservices = models.ManyToManyField(Healthservices)
-
-    def __str__(self):
-        return self.name
-
-class Authorities(models.Model):
-    hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
-    name =models.CharField(max_length=100)
-    email = models.EmailField()
-    contact = models.IntegerField()
-    address =models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/')

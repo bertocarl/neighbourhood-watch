@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Neighbourhood,Healthservices,Business,Health,Authorities,Blog,Profile,Notifications,Comment
+from .models import Neighbourhood,Business,Blog,Profile,Notifications,Comment
 from .email import send_priority_email
 from .forms import NotificationsForm,ProfileForm,BlogForm,BusinessForm,CommentForm
 from decouple import config,Csv
@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import AuthoritiesSerializer, HealthSerializer, BusinessSerializer
+from .serializer import BusinessSerializer
 
 
 
@@ -28,9 +28,8 @@ def index(request):
         comments= Comment.objects.all()
         business= Business.objects.all()
         all_notifications= Notifications.objects.all()
-        authorities = Authorities.objects.all()
-        healthservices = Health.objects.all()
-
+        
+        
     except ObjectDoesNotExist:
         return redirect('create-profile')
 
@@ -51,18 +50,7 @@ def blog(request):
     return render(request,'blog.html',{"blogs":blogs})
 
 @login_required(login_url='/accounts/login/')
-def health(request):
-    current_user = request.user
-    healthservices = Healthservices.objects.filter()
 
-    return render(request,'health.html',{"healthservices":healthservices})
-
-@login_required(login_url='/accounts/login/')
-def authorities(request):
-    current_user = request.user
-    authorities = Authorities.objects.filter()
-
-    return render(request,'authorities.html',{"authorities":authorities})
 
 @login_required(login_url='/accounts/login/')
 def businesses(request):
@@ -234,14 +222,3 @@ class BusinessList(APIView):
         serializers = BusinessSerializer(all_business, many=True)
         return Response(serializers.data)
 
-class AuthoritiesList(APIView):
-    def get(self, request, format=None):
-        all_authorities = Authorities.objects.all()
-        serializers =AuthoritiesSerializer(all_authorities, many=True)
-        return Response(serializers.data)
-
-class HealthList(APIView):
-    def get(self, request, format=None):
-        all_health = Health.objects.all()
-        serializers = HealthSerializer(all_health, many=True)
-        return Response(serializers.data)

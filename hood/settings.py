@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'neighbour',
-    'bootstrap3',
+    # 'bootstrap3',
     'bootstrap4',
     'tinymce',
     'rest_framework',
