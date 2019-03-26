@@ -1,5 +1,4 @@
-# Neighbourhood Watch
-
+# Neighbourhood 
 This python/django web-app was created to act as a Neighbourhood Watch.
 Developed By: Albert Carlos Omware
 
