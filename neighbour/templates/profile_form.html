@@ -13,7 +13,7 @@
 
 
     <div class="col-md-4 form-section">
-      {{form.media}}
+     
 
     {% if form.errors %}
         <p>Please enter correct value</p>
@@ -28,7 +28,7 @@
           <form action="{% url 'create-profile' %}" method="post" enctype="multipart/form-data">
 
             {% csrf_token%}
-            {% bootstrap_form form %}
+            {{form}}
 
             <div class="form-group">
               <input type="submit" class="btn btn-primary login-button" value="Post">
@@ -51,12 +51,11 @@
 
 <style>
 .panel{
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) fixed;
+  background:#1F0812;
 }
 p, label,a{
-  color:white;
+  color:#E28413;
   font-size: 15px;
-}
 .panel-default{
   border-color: inherit;
 }
