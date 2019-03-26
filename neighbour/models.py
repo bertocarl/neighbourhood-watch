@@ -9,9 +9,13 @@ Priority=(
     ('High Priority','High Priority'),
 )
 
-# Create your models here.
+Choice=(
+    ('Karen', 'Karen'),
+    ('Hardy', 'Hardy'),
+    ('Galleria', 'Galleria')
+)
 class Neighbourhood(models.Model):
-    hood= models.CharField(max_length=100)
+    hood= models.CharField(max_length=15,choices=hood,default="Karen")
 
     def __str__(self):
         return self.hood
