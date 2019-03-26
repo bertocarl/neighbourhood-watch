@@ -26,6 +26,7 @@
           <form action="{% url 'new-business' %}" method="post" enctype="multipart/form-data">
 
             {% csrf_token%}
+            
             {{form}}
 
             <input type="submit" class="btn btn-warning login-button" value="Submit Business">

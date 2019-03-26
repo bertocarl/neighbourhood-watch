@@ -27,10 +27,11 @@
           <form action="{% url 'new-blog' %}" method="post" type="multipart/form-data">
 
             {% csrf_token%}
+            
             {{form}}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-warning login-button" value="Post">
+              <input type="submit" class="btn btn-warning login-button" value="Post Blog">
 
             </div>
             <input type="hidden" name="next" value="/">
@@ -49,9 +50,11 @@
 </div>
 
 <style>
-
+.panel{
+  background:#1F0812;
+}
 p, label,a{
-  color:white;
+  color:#E28413;
   font-size: 15px;
 }
 .panel-default{

@@ -164,7 +164,7 @@ def new_notification(request):
         if form.is_valid():
             notification = form.save(commit = False)
             notification.author = current_user
-            notification.hood = profile.neighbourhood
+            notification.hood = Profile.Neighbourhood
             notification.save()
 
             if notification.priority == 'High Priority':
